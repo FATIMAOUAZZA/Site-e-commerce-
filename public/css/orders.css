@@ -1,0 +1,39 @@
+/* public/css/orders.css */
+.container {
+    margin-top: 30px;
+    padding: 0 15px;
+}
+
+.order-box {
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin-bottom: 15px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+}
+
+.order-box h3 {
+    font-size: 1.3rem;
+    color: #333;
+}
+
+.order-box p {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 8px;
+}
+
+.order-box {
+    background-color: #f4f4f4;
+    border: 1px solid #ddd;
+}
+
+.order-box.cancelled {
+    border: 1px solid red;
+    background-color: #f8d7da;
+}
+
+.order-box.completed {
+    border: 1px solid green;
+    background-color: #d4edda;
+}

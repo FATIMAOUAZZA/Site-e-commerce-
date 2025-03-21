@@ -24,28 +24,33 @@
             <img src="{{ asset('images/logo.png') }}" alt="Logo" class="logo">
         </a>
         <nav class="navbar">
-            <a href="{{ route('home') }}">Home</a>
-            <a href="{{ route('shop') }}">Shop</a>
-            <a href="{{ route('newArrivals') }}">New Arrivals</a>
-            <a href="{{ route('about') }}">About</a>
-            <a href="{{ route('contact') }}">Contact</a>
+    <a href="{{ route('home') }}">Home</a>
+    <a href="{{ route('shop') }}">Shop</a>
+    <a href="{{ route('newArrivals') }}">New Arrivals</a>
+    <a href="{{ route('about') }}">About</a>
+    <a href="{{ route('contact') }}">Contact</a>
 
-            @auth
+    @auth
+    <a href="{{ route('orders.myOrders') }}">
+    <i class="fas fa-hourglass-half"></i> Suivi de mes commandes
+</a>
 
-    @if(Auth::user()->isAdmin())
-        <a href="{{ route('admin') }}">Admin</a>
-    @endif
+        @if(Auth::user()->isAdmin())
+            <a href="{{ route('admin') }}">Admin</a>
+        @endif
 
-    <form action="{{ route('logout') }}" method="POST" class="logout-form">
-        @csrf
-        <button type="submit" class="logout-btn">Logout</button>
-    </form>
-@else
-    <a href="{{ route('login') }}"><div class="fas fa-user" id="user-btn"></div></a>
-@endauth
+        <form action="{{ route('logout') }}" method="POST" class="logout-form">
+            @csrf
+            <button type="submit" class="logout-btn">Logout</button>
+        </form>
+    @else
+        <a href="{{ route('login') }}">
+            <div class="fas fa-user" id="user-btn"></div>
+        </a>
+    @endauth
+</nav>
 
 
-        </nav>
 
         <div class="icons">
             <div class="fas fa-search" id="search-btn"></div>
