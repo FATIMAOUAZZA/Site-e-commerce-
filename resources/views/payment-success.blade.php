@@ -1,11 +1,11 @@
 @extends('layout')
 
-@section('title', 'Paiement Réussi')
+@section('title', 'Payment Successful')
 
 @section('content')
     <div class="container">
-        <h1>Paiement Réussi !</h1>
-        <p>Merci pour votre achat. Votre commande a été confirmée.</p>
-        <a href="{{ route('home') }}" class="btn btn-primary">Retour à l'accueil</a>
+        <h1>Payment Successful!</h1>
+        <p>Thank you for your purchase. Your order has been confirmed.</p>
+        <a href="{{ route('home') }}" class="btn btn-primary">Return to Homepage</a>
     </div>
 @endsection

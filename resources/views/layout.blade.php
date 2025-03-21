@@ -24,33 +24,31 @@
             <img src="{{ asset('images/logo.png') }}" alt="Logo" class="logo">
         </a>
         <nav class="navbar">
-    <a href="{{ route('home') }}">Home</a>
-    <a href="{{ route('shop') }}">Shop</a>
-    <a href="{{ route('newArrivals') }}">New Arrivals</a>
-    <a href="{{ route('about') }}">About</a>
-    <a href="{{ route('contact') }}">Contact</a>
+            <a href="{{ route('home') }}">Home</a>
+            <a href="{{ route('shop') }}">Shop</a>
+            <a href="{{ route('newArrivals') }}">New Arrivals</a>
+            <a href="{{ route('about') }}">About</a>
+            <a href="{{ route('contact') }}">Contact</a>
 
-    @auth
-    <a href="{{ route('orders.myOrders') }}">
-    <i class="fas fa-hourglass-half"></i> Suivi de mes commandes
-</a>
+            @auth
+            <a href="{{ route('orders.myOrders') }}">
+                <i class="fas fa-route"></i> Track My Orders
+            </a>
 
-        @if(Auth::user()->isAdmin())
-            <a href="{{ route('admin') }}">Admin</a>
-        @endif
+            @if(Auth::user()->isAdmin())
+                <a href="{{ route('admin') }}">Admin</a>
+            @endif
 
-        <form action="{{ route('logout') }}" method="POST" class="logout-form">
-            @csrf
-            <button type="submit" class="logout-btn">Logout</button>
-        </form>
-    @else
-        <a href="{{ route('login') }}">
-            <div class="fas fa-user" id="user-btn"></div>
-        </a>
-    @endauth
-</nav>
-
-
+            <form action="{{ route('logout') }}" method="POST" class="logout-form">
+                @csrf
+                <button type="submit" class="logout-btn">Logout</button>
+            </form>
+            @else
+            <a href="{{ route('login') }}">
+                <div class="fas fa-user" id="user-btn"></div>
+            </a>
+            @endauth
+        </nav>
 
         <div class="icons">
             <div class="fas fa-search" id="search-btn"></div>
@@ -127,14 +125,14 @@
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token']").getAttribute('content')
             },
             body: JSON.stringify({ email: email })
         })
         .then(response => response.json())
         .then(data => {
             Swal.fire({
-                title: "Abonnement réussi !",
+                title: "Subscription Successful!",
                 text: data.success,
                 icon: "success",
                 confirmButtonText: "OK"
@@ -143,8 +141,8 @@
         })
         .catch(error => {
             Swal.fire({
-                title: "Erreur",
-                text: "Cet email est déjà inscrit ou invalide.",
+                title: "Error",
+                text: "This email is already registered or invalid.",
                 icon: "error",
                 confirmButtonText: "OK"
             });

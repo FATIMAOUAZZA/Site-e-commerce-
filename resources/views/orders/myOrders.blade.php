@@ -2,10 +2,10 @@
 
 @section('content')
 <div class="container">
-    <h2>Mes commandes</h2>
+    <h2>My Orders</h2>
 
     @if($orders->isEmpty())
-        <p>Vous n'avez pas encore passé de commande.</p>
+        <p>You haven't placed any orders yet.</p>
     @else
         @foreach($orders as $order)
         <div class="order-box" style="
@@ -20,24 +20,24 @@
                 @endif
             border-radius: 8px;
         ">
-            <h3>Commande #{{ $order->id }}</h3>
-            <p><strong>Date de la commande :</strong> {{ $order->created_at->format('d/m/Y') }}</p>
-            <p><strong>Statut de la commande :</strong> 
+            <h3>Order #{{ $order->id }}</h3>
+            <p><strong>Order Date:</strong> {{ $order->created_at->format('d/m/Y') }}</p>
+            <p><strong>Order Status:</strong> 
                 @if($order->status == 'completed')
-                    <span style="color: green;">Complétée</span>
+                    <span style="color: green;">Completed</span>
                 @elseif($order->status == 'pending')
-                    <span style="color: orange;">En attente</span>
+                    <span style="color: orange;">Pending</span>
                 @elseif($order->status == 'cancelled')
-                    <span style="color: red;">Annulée</span>
+                    <span style="color: red;">Cancelled</span>
                 @else
-                    <span>Inconnu</span>
+                    <span>Unknown</span>
                 @endif
             </p>
-            <p><strong>Statut de paiement :</strong> 
+            <p><strong>Payment Status:</strong> 
                 @if($order->payment_status)
                     <span style="color: green;">{{ $order->payment_status }}</span>
                 @else
-                    <span style="color: gray;">Non payé</span>
+                    <span style="color: gray;">Unpaid</span>
                 @endif
             </p>
         </div>

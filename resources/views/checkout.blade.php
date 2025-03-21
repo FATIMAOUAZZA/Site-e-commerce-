@@ -1,37 +1,29 @@
 @extends('layout')
 
 @section('content')
+<link rel="stylesheet" href="{{ asset('css/checkout.css') }}">
+
 <div class="container">
-    <h2>Passer la commande</h2>
+    <h2>Place Order</h2>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Produit</th>
-                <th>Quantité</th>
-                <th>Prix unitaire</th>
-                <th>Total</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($cartItems as $item)
-                <tr>
-                    <td>{{ $item->product->name }}</td>
-                    <td>{{ $item->quantity }}</td>
-                    <td>{{ $item->product->price }} €</td>  <!-- Récupérer le prix unitaire -->
-                    <!-- Calcul du total -->
-                    <td>{{ $item->quantity * $item->product->price }} €</td>  <!-- Total = quantité * prix unitaire -->
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
+    <div class="order-summary">
+        @foreach ($cartItems as $item)
+            <div class="order-item">
+                <p><strong>Product:</strong> {{ $item->product->name }}</p>
+                <p><strong>Quantity:</strong> {{ $item->quantity }}</p>
+                <p><strong>Unit Price:</strong> {{ $item->product->price }} €</p>
+                <p><strong>Total:</strong> {{ $item->quantity * $item->product->price }} €</p>
+            </div>
+            <hr> <!-- Separation line -->
+        @endforeach
+    </div>
 
-    <h4>Total: {{ $totalAmount }} € (incluant {{ $deliveryCharges }} € de livraison)</h4>
+    <h4>Total: {{ $totalAmount }} € (Including {{ $deliveryCharges }} € Delivery Charges)</h4>
 
     <form action="{{ route('orders.store') }}" method="POST">
-    @csrf
+        @csrf
         <div class="mb-3">
-            <label for="name" class="form-label">Nom</label>
+            <label for="name" class="form-label">Name</label>
             <input type="text" class="form-control" name="name" required>
         </div>
         <div class="mb-3">
@@ -39,22 +31,22 @@
             <input type="email" class="form-control" name="email" required>
         </div>
         <div class="mb-3">
-            <label for="phone" class="form-label">Téléphone</label>
+            <label for="phone" class="form-label">Phone</label>
             <input type="text" class="form-control" name="phone" required>
         </div>
         <div class="mb-3">
-            <label for="city" class="form-label">Ville</label>
+            <label for="city" class="form-label">City</label>
             <input type="text" class="form-control" name="city" required>
         </div>
         <div class="mb-3">
-            <label for="address" class="form-label">Adresse</label>
+            <label for="address" class="form-label">Address</label>
             <input type="text" class="form-control" name="address" required>
         </div>
         <div class="mb-3">
-            <label for="zipcode" class="form-label">Code Postal</label>
+            <label for="zipcode" class="form-label">Zip Code</label>
             <input type="text" class="form-control" name="zipcode" required>
         </div>
-        <button type="submit" class="btn btn-primary">Passer la commande</button>
+        <button type="submit" class="btn btn-primary">Place Order</button>
     </form>
 </div>
 @endsection

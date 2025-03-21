@@ -1,11 +1,11 @@
 @extends('layout')
 
-@section('title', 'Paiement Annulé')
+@section('title', 'Payment Canceled')
 
 @section('content')
     <div class="container">
-        <h1>Paiement Annulé</h1>
-        <p>Votre commande a été annulée. Si vous avez des questions, contactez-nous.</p>
-        <a href="{{ route('home') }}" class="btn btn-primary">Retour à l'accueil</a>
+        <h1>Payment Canceled</h1>
+        <p>Your order has been canceled. If you have any questions, please contact us.</p>
+        <a href="{{ route('home') }}" class="btn btn-primary">Return to Homepage</a>
     </div>
 @endsection
